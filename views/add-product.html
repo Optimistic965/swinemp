@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add product</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        header{
+            height: 3.5em;
+            background-color: #333;
+            color: #fff;
+            /* padding: 10px; */
+        }
+        main{
+            padding: 2em;
+        }
+        .nav-cont{
+            width: 50%;
+            height: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+        .nav-item-cont{
+            display: flex;
+            list-style-type: none;
+            justify-content: space-around;
+        }
+
+        .nav-item a{
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-item a:hover,
+        .nav-item a:active,
+        .nav-item a.active {
+            color: rgb(20, 41, 72);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="nav-cont">
+            <ul class="nav-item-cont">
+                <li class="nav-item"><a href="/">Shop</a></li>
+                <li class="nav-item"><a class="active" href="/add-product">Add product</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <form action="/add-product" method="post">
+            <input type="text" name="title" id="title">
+            <button type="submit">Add product</button>
+        </form>
+    </main>
+</body>
+</html>
