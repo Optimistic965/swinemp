@@ -1,16 +1,23 @@
 const express = require('express');
 const path = require('path')
-// const bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 
 const rootdir = require('./util/path')
 
 const app = express();
-// app.use(bodyParser.urlencoded({ extended: false }))
+
+// setting the templating engine
+app.set('view engine', 'pug')
+app.set('views', path.join(rootdir, 'views'))
+
+
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(express.static(rootdir))
 
 const shopRouter = require('./routes/shop')
-const adminRouter = require('./routes/admin')
+const adminData = require('./routes/admin')
 
-app.use(adminRouter)
+app.use('/admin' ,adminData.route)
 app.use(shopRouter)
 
 app.use((req, res) => {
