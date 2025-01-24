@@ -3,25 +3,28 @@ const path = require('path')
 const bodyParser = require('body-parser')
 
 const rootdir = require('./util/path')
+const shopController = require('./controllers/shop')
+const errorController = require('./controllers/error')
+const shopRouter = require('./routes/shop')
+const adminRouter = require('./routes/admin')
 
 const app = express();
 
 // setting the templating engine
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 app.set('views', path.join(rootdir, 'views'))
-
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(rootdir))
 
-const shopRouter = require('./routes/shop')
-const adminData = require('./routes/admin')
+// App routes
+app.use('/admin', adminRouter)
+app.use('/shop', shopRouter)
 
-app.use('/admin' ,adminData.route)
-app.use(shopRouter)
+// redirect to landing page
+app.get('/', shopController.redirectToShop)
 
-app.use((req, res) => {
-    res.status(404).sendFile(path.join(rootdir, 'views', 'not-found.html'))
-})
+// manage 404
+app.use(errorController.return404)
 
 app.listen(3000);

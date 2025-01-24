@@ -1,5 +1,5 @@
 {
-  "name": "first-express-app",
+  "name": "swine_marketplace",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
