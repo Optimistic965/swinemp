@@ -1,0 +1,36 @@
+<%- include('../includes/head.ejs') %>
+<body>
+    <main>
+        <%- include('../includes/nav.ejs') %>
+        <div class="h-[90vh] w-screen relative" id="video_cont">
+            <video class="h-full w-full object-cover" autoplay muted loop src="/public/assets/boar.mp4"></video>
+            <div class="absolute top-[0] w-full h-full z-10 bg-yellow-100 flex justify-center items-center opacity-40">
+            </div>
+        </div>
+        <section class="w-screen min-h-[90vh] bg-yellow-100 relative">
+            <button class="absolute bottom-[0] right-[0] m-6 bg-brown text-white rounded-full w-[50px] h-[50px] cursor-pointer">top</button>
+            <h2 class="text-3xl p-2 border-b-2 border-brown w-fit">Available for sales</h2>
+            <section class="flex flex-wrap" id="prod-cont">
+                <!-- Products will be dynamically loaded here -->
+                 <% if (data) { %>
+                    <% data.forEach(product => { %>
+                        <div id="<%= product.id %>" class="product-card w-[300px] h-[300px] m-4 bg-slate-100 rounded-[10px] shadow-sm">
+                            <img class="w-full h-[60%] rounded-t-[10px]" src="<%= product.image %>" alt="<%= product.title %>">
+                            <div class="px-6 relative">
+                                <h3 class="text-xl mt-2"><%= product.name %></h3>
+                                <p class="text-gray-600"><%= product.description %></p>
+                                <p class="text-gray-600">Price: $<%= product.price %></p>
+                                <button class="absolute bg-brown text-white right-[1em] rounded-[8px]">
+                                    <a class="w-full h-full p-2 rounded-[8px]" href="/shop/<%= product.id %>">Purchase</a>
+                                </button>
+                            </div>
+                        </div>
+                    <% }); %>
+                <%} else { %>
+                    <p>Sold out, checkback in few days</p>
+                <% } %>
+            </section>
+        </section>
+    </main>
+</body>
+</html>

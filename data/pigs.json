@@ -1,0 +1,37 @@
+[
+    {
+        "id": 0,
+        "name": "Boar",
+        "description": "6 years large white",
+        "price": 10.99,
+        "image": "/public/assets/pigBG.jpg"
+    },
+     {
+        "id": 1,
+        "name": "Wisty",
+        "description": "6 years large white",
+        "price": 10.99,
+        "image": "/public/assets/wild-boar.jpg"
+    },
+     {
+        "id": 2,
+        "name": "Red sow",
+        "description": "2 month gestating sow",
+        "price": 10.99,
+        "image": "/public/assets/pig-3.jpg"
+    },
+     {
+        "id": 3,
+        "name": "Yarn",
+        "description": "6 months racist piglet",
+        "price": 10.99,
+        "image": "/public/assets/animal-shoot.jpg"
+    },
+     {
+        "id": 4,
+        "name": "Sowy",
+        "description": "3 years poland breed",
+        "price": 10.99,
+        "image": "/public/assets/pig-7.jpg"
+    }
+]

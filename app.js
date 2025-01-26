@@ -3,6 +3,7 @@ const path = require('path')
 const bodyParser = require('body-parser')
 
 const rootdir = require('./util/path')
+const sequelize = require('./util/database')
 const shopController = require('./controllers/shop')
 const errorController = require('./controllers/error')
 const shopRouter = require('./routes/shop')
@@ -27,4 +28,11 @@ app.get('/', shopController.redirectToShop)
 // manage 404
 app.use(errorController.return404)
 
-app.listen(3000);
+sequelize.sync()
+    .then((result) => {
+        app.listen(3000);
+        console.log('Server is running on port 3000...');
+    })
+    .catch((err) => {
+            console.log('Error connecting to the database:', err);
+        });
