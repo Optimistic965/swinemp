@@ -4,10 +4,15 @@ exports.redirectToShop = (req, res) => {
     res.redirect('/shop')
 }
 
-exports.homePage = (req, res) => {
-    Pig.getAll((availableProducts) => {
-        res.render('shop/productlist', { pageTitle: 'Marketplace', data: availableProducts})
-    })
+exports.homePage = async (req, res) => {
+    Pig.findAll()
+        .then((availableProducts) => {
+            console.log(availableProducts)
+            res.render('shop/productlist', { pageTitle: 'Marketplace', data: availableProducts})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
 }
 
 exports.getById = (req, res, next) => {
